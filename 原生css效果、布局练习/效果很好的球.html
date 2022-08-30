@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            border-radius: 50%;
+            animation: change 5s linear 3  alternate  forwards;
+            animation-delay: 5s; 
+            /* animation-name: change;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            
+            /* animation-iteration-count: 3;
+            animation-direction: alternate;
+            animation-fill-mode: forwards; */
+
+        }
+        .box:hover{
+            animation-play-state: paused;
+        }
+        @keyframes change {
+            0%{
+                transform: translate(0,0);
+            }
+            20%{
+                transform: translate(200px,200px);
+            }
+            40%{
+                transform: translate(400px,0);
+            }
+            60%{
+                transform: translate(600px,200px);
+            }
+            80%{
+                transform: translate(800px,0);
+            }
+            100%{
+                transform: translate(0,0);
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

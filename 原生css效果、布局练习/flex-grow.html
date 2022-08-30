@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #bigbox{
+            display: flex;
+        }
+        .leftbox{
+            flex-grow: 2;
+        }
+        .rightbox{
+            flex-grow: 3;
+        }
+    </style>
+</head>
+<body>
+    <div id="bigbox" style="width: 200px;height:200px;background-color:red">
+        <div class="leftbox" style="background-color: blue;"></div>
+        <div class="rightbox" style="background-color: yellow;"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* 导航 */
+
+.navbar-brand{
+    padding: 0 15px;
+    height: 70px;
+}
+
+/* banner */
+.banner{
+    /* height: 500px; */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    background: url(../images/bannerbg.png) no-repeat;
+    background-size: cover;
+}
+ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+.box{
+    background: #fff;
+    padding: 20px 16px;
+}
+.box li{
+    padding-top: 10px;
+}
+
+/* content-one */
+.content-one,.content-three{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.tab-content .tab-list{
+    margin-bottom: 10px;
+}

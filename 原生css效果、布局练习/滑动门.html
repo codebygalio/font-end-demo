@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./normalize.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list-container{
+            width: 1226px;
+            height: 460px;
+            background-color: rgb(39, 43, 51);
+        }
+        .left-container{
+            width: 234px;
+            height: 460px;
+            background-color: rgba(105, 101, 101, .6);
+            position:relative;
+        }
+        ul{
+            padding-top: 20px;
+            padding-left: 30px;
+            margin:0;
+        }
+        ul li {
+            list-style-type: none;
+            height: 42px;
+            line-height: 42px;
+            color: #fff;
+            font-size: 14px;
+            
+        }
+        .right-list-container{
+            width: 992px;
+            height: 460px;
+            background-color: #fff000;
+            position:absolute;
+            left: 234px;
+            top: 0;
+            display: none;
+        }
+        ul li:hover .right-list-container{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <div class="left-container">
+           <!-- <ul onmouseover="showRightContainer()" onmouseout="NoShowRightContainer()"> -->
+            <ul>
+            <li>
+                <div href="#" on>电话卡 手机</div>
+                <div class="right-list-container">1111111111111111111111</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+                <div class="right-list-container">222222222222222222222</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            <li>
+                <div href="#">电话卡 手机</div>
+            </li>
+            
+           </ul>
+        </div>
+       
+    </div>
+    <script>
+        function showRightContainer(){
+            const getRightContainer = document.querySelector('.right-list-container')
+            getRightContainer.style.display = 'block';
+        }
+        function NoShowRightContainer(){
+            const getRightContainer = document.querySelector('.right-list-container')
+            getRightContainer.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

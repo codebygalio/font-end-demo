@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <style>
+        .box{
+            width: 1226px;
+            height: 460px;
+            margin: 50px auto;
+            background-image: url("images/3d9f8cf47b5eeb286a83e6e95a60105a.jpg");
+            background-size: 100%;
+            animation: change 12s linear infinite;
+        }
+        .box:hover{
+            animation-play-state: paused;
+        }
+        @keyframes change {
+            0%{
+                background-image: url("images/3d9f8cf47b5eeb286a83e6e95a60105a.jpg");
+            }
+            20%{
+                background-image: url("images/9ebff5f5c1f52f2dbdd611897adbefd4.jpg");
+            }
+            40%{
+                background-image: url("images/84cec825f1cd04ea6554fece8ecbc236.jpg");
+            }
+            60%{
+                background-image: url("images/499c6a806572dab61c794dd9ae4c7617.jpg");
+            }
+            80%{
+                background-image: url("images/9871ec89f05402dd97c525cbb824ff8d.jpg");
+            }
+            100%{
+                background-image: url("images/5996037f1186354a680dfd7c050d32d6.jpg");
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+</body>
+</html>
