@@ -23,6 +23,7 @@
   // reset rem unit on page resize
   window.addEventListener('resize', setRemUnit)
   window.addEventListener('pageshow', function (e) {
+        //火狐浏览器前进后退是从缓存里读取的,e.persisted代表从缓存中读取
     if (e.persisted) {
       setRemUnit()
     }

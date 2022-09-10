@@ -15,7 +15,7 @@
             opacity: 1;
 
             /* display: block; */
-            display: none;
+            /* display: none; */
         }
     </style>
 </head>
@@ -23,7 +23,7 @@
     <div style="margin-top: 500px;">
 <div id="container" class="testt">内容</div> 
 <div class="ztest"></div>
-<div style="height: 100px;" class="red_box block"></div> 
+<div style="height: 100px;" class="red_box block none"></div> 
 <ul><li>1</li><li>2</li><li>3</li></ul>
 <button>按钮</button>
 </div>
@@ -43,11 +43,11 @@
         // $('.red_box').css('transition','all 2s')
         $('#container').click(function(){
                 $('.red_box').toggleClass('none')
-                if($('.red_box').css('block')){
-                    $('.red_box').css('display','none')
-                }{
-                    $('.red_box').css('display','')  
-                }
+                // if($('.red_box').css('block')){
+                //     $('.red_box').css('display','none')
+                // }{
+                //     $('.red_box').css('display','')  
+                // }
             
             
             
