@@ -1,8 +1,10 @@
 $(function(){
+  // 注册、登录事件切换
   $('#link_reg,#link_login').on('click',function(){
     $('.reg-box,.login-box').toggle()
   })
 
+  // 表单校验
   layui.use('form', function(){
     var form = layui.form;  
     form.verify({
@@ -37,6 +39,7 @@ $(function(){
     });   
   });
   var layer = layui.layer;
+  // 登录按钮、注册按钮处理
   $('#form_reg').on('submit',function(e){
     e.preventDefault()
     const data = {username: $('#form_reg [name=username]').val(),password:$('#form_reg [name=password]').val()}
