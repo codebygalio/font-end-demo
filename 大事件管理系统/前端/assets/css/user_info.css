@@ -1,0 +1,16 @@
+body{
+    background-color: #F2F3F5;
+    padding: 15px;
+}
+.layui-form{
+    width: 500px;
+    max-width: 100%;
+}
+.userinfo_form [name="username"]{
+    background-color: rgba(0, 0, 0,.05);
+    user-select: none;
+}
+.userinfo_form .layui-input-block{
+    display: flex;
+    justify-content: flex-end;
+}
