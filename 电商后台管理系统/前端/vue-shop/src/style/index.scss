@@ -4,3 +4,13 @@ html, body, #app {
 #app {
     // min-width: 1366px;
 }
+
+
+// 级联选择器样式
+.el-cascader-panel{
+        height: 200px !important;
+        .el-cascader-menu__wrap.el-scrollbar__wrap{
+            overflow-x: auto !important;
+        }
+    }
+   

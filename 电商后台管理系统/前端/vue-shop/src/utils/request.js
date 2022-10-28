@@ -17,7 +17,7 @@ request.interceptors.request.use(config => {
 request.interceptors.response.use(res =>{
     // Message.error('123')
     const data = res.data
-    if(data.meta.status != 200) {
+    if(!/^20\w$/.test(data.meta.status)) {
         Message({message:data.meta.msg, type: 'error', duration: 5000})
         $router.push('/login')
         return false

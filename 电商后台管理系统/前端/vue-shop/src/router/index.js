@@ -54,6 +54,18 @@ const routers = new VueRouter({
           component:()=> import('../components/power/Roles'),
         }
       ]
+    },
+    {
+      path:'',
+      component: () => import('../views/Home'),
+      name:'商品管理',
+      children:[
+        {
+          path: '/categories',
+          name:'商品分类',
+          component:()=> import('../views/Categories'),
+        }
+      ]
     }
   ]
 })

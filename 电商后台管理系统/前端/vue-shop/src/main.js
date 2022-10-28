@@ -5,9 +5,12 @@ import './style/index.scss'
 import 'normalize.css/normalize.css'
 
 import { Button, Form, FormItem, Input, Message, Container, Main, Aside, Header, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Icon, Row, Col, Table, TableColumn, Switch, Tooltip, 
-Tag, MessageBox, Dialog, Tree} from 'element-ui';
+Tag, MessageBox, Dialog, Tree, Pagination, Cascader} from 'element-ui';
 import './assets/fonts/iconfont.css'
 import request from './utils/request'
+
+import ZkTable from 'vue-table-with-tree-grid'
+Vue.component('tree-table', ZkTable)
 
 
 Vue.config.productionTip = false
@@ -36,6 +39,8 @@ Vue.use(Tooltip)
 Vue.use(Tag)
 Vue.use(Dialog)
 Vue.use(Tree)
+Vue.use(Pagination)
+Vue.use(Cascader)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm;
