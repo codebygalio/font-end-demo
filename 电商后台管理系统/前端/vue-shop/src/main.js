@@ -5,7 +5,7 @@ import './style/index.scss'
 import 'normalize.css/normalize.css'
 
 import { Button, Form, FormItem, Input, Message, Container, Main, Aside, Header, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Icon, Row, Col, Table, TableColumn, Switch, Tooltip, 
-Tag, MessageBox, Dialog, Tree, Pagination, Cascader} from 'element-ui';
+Tag, MessageBox, Dialog, Tree, Pagination, Cascader, Alert, Tabs, TabPane} from 'element-ui';
 import './assets/fonts/iconfont.css'
 import request from './utils/request'
 
@@ -41,6 +41,9 @@ Vue.use(Dialog)
 Vue.use(Tree)
 Vue.use(Pagination)
 Vue.use(Cascader)
+Vue.use(Alert)
+Vue.use(Tabs)
+Vue.use(TabPane)
 
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm;

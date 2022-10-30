@@ -48,7 +48,7 @@
         <!-- 内容 -->
         <el-main class="main">
           <!-- 面包屑 -->
-          <el-breadcrumb separator="/">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
   <el-breadcrumb-item v-for="item in breadcrumb" :key="item.name" :to="item.path?{path:item.path}:''">{{item.name}}</el-breadcrumb-item>
 </el-breadcrumb>
 <!-- 卡片 -->
@@ -172,7 +172,8 @@ $word_color: #fff;
    box-shadow: 0 1px 1px rgba(0, 0, 0,0.15);
   }
  .main{
-  background-color: #fff;
+  background-color: #e9edf0;
+
  }
 }
 </style>

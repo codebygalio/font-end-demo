@@ -66,6 +66,18 @@ const routers = new VueRouter({
           component:()=> import('../views/Categories'),
         }
       ]
+    },
+    {
+      path:'',
+      component: () => import('../views/Home'),
+      name:'商品管理',
+      children:[
+        {
+          path: '/params',
+          name:'商品分类',
+          component:()=> import('../views/Params'),
+        }
+      ]
     }
   ]
 })
