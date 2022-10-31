@@ -14,3 +14,13 @@ html, body, #app {
         }
     }
    
+// 步骤条样式
+.el-step__title{
+    font-size: 12px;
+}
+
+// 富文本编辑器
+.ql-editor{
+    // line-height: normal !important;
+    height: 300px !important;
+}
