@@ -201,7 +201,7 @@ export default {
 
 <style lang="scss" scoped>
 .box-card {
-  min-width: 600px;
+  min-width: 700px;
 }
 .mgleft {
   margin-left: 50px;

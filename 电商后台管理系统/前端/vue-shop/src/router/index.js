@@ -102,6 +102,18 @@ const routers = new VueRouter({
           component:()=> import('../views/Orders'),
         }
       ]
+    },
+    {
+      path:'',
+      component: () => import('../views/Home'),
+      name:'数据统计',
+      children:[
+        {
+          path: '/reports',
+          name:'数据报表',
+          component:()=> import('../views/Reports'),
+        }
+      ]
     }
   ]
 })

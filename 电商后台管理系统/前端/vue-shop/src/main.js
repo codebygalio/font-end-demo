@@ -5,12 +5,15 @@ import './style/index.scss'
 import 'normalize.css/normalize.css'
 
 
+
 import { Button, Form, FormItem, Input, Message, Container, Main, Aside, Header, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Icon, Row, Col, Table, TableColumn, Switch, Tooltip, 
 Tag, MessageBox, Dialog, Tree, Pagination, Cascader, Alert, Tabs, TabPane, Steps, Step, CheckboxGroup, Checkbox, Upload, Timeline, TimelineItem } from 'element-ui';
 import './assets/fonts/iconfont.css'
 import request from './utils/request'
 
 import ZkTable from 'vue-table-with-tree-grid'
+
+
 Vue.component('tree-table', ZkTable)
 
 

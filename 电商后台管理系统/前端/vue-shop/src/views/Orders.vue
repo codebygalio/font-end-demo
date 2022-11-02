@@ -104,7 +104,7 @@
 
 <script>
 import dayjs from "dayjs";
-import cityData from "./cityData";
+const cityData = ()=> import( "./cityData")
 export default {
   data() {
     return {
