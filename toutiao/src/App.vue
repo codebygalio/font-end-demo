@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
+      <van-button type="primary">主要按钮</van-button>
+
       <div class="icon-uniE900"></div>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -9,6 +11,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  created(){
+   console.log(this)
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
