@@ -1,0 +1,26 @@
+html, body, #app {
+    height: 100%;
+}
+#app {
+    // min-width: 1366px;
+}
+
+
+// 级联选择器样式
+.el-cascader-panel{
+        height: 200px !important;
+        .el-cascader-menu__wrap.el-scrollbar__wrap{
+            overflow-x: auto !important;
+        }
+    }
+   
+// 步骤条样式
+.el-step__title{
+    font-size: 12px;
+}
+
+// 富文本编辑器
+.ql-editor{
+    // line-height: normal !important;
+    height: 300px !important;
+}

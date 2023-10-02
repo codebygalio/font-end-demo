@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+ 
+  <div id="app">
+    <p v-text="name"></p>
+    <div v-text="name"></div>
+    <p v-text="age"></p>
+  </div>
+   
+  <script>
+    let data = {
+      name: '名称',
+      age: 10
+    }
+    Object.keys(data).forEach((key) => {
+      defineReactive(data, key, data[key])
+    })
+    function defineReactive(data, key, value) {
+      Object.defineProperty(data, key, {
+        get() {
+          return value
+        },
+        set(newValue) {
+          if (newValue === value) {
+            return
+          }
+          value = newValue
+          compile()
+        }
+      })
+    }
+    function compile() {
+      let app = document.getElementById('app')
+      const childNodes = app.childNodes 
+      childNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          const attrs = node.attributes
+          Array.from(attrs).forEach(attr => {
+            const nodeName = attr.nodeName
+            const nodeValue = attr.nodeValue
+            if (nodeName === 'v-text') {
+              node.innerText = data[nodeValue]
+            }
+          })
+        }
+      })
+    }
+    compile()
+  </script>
+
+  
+</body>
+
+</html>

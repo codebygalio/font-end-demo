@@ -1,0 +1,5 @@
+.my_settings.js
+build/*.js
+src/assets
+public
+dist

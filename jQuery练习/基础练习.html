@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body .none{
+            opacity: 0;
+            display: none;
+        }
+
+        .block{
+            opacity: 1;
+
+            /* display: block; */
+            /* display: none; */
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-top: 500px;">
+<div id="container" class="testt">内容</div> 
+<div class="ztest"></div>
+<div style="height: 100px;" class="red_box block none"></div> 
+<ul><li>1</li><li>2</li><li>3</li></ul>
+<button>按钮</button>
+</div>
+<script>
+    window.onload=function(){
+        // $('#container').click(function(){
+        //     $(this).html('<p>卧槽</p>') 
+        // })
+        $('#container').addClass(function(){
+            return 'xx'
+        })
+        // true或者false 
+        console.log($('div').hasClass('ztest'))  
+
+        $('.red_box').css({'background':'red','width':'100px'})
+        $('.red_box').css('background','red')
+        // $('.red_box').css('transition','all 2s')
+        $('#container').click(function(){
+                $('.red_box').toggleClass('none')
+                // if($('.red_box').css('block')){
+                //     $('.red_box').css('display','none')
+                // }{
+                //     $('.red_box').css('display','')  
+                // }
+            
+            
+            
+        })
+        $('button').click(function(){
+            $('.red_box').show()
+        })
+    }
+</script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</body>
+</html>

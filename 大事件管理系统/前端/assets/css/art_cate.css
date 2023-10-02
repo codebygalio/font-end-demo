@@ -1,0 +1,33 @@
+body{
+    padding: 15px;
+    background-color: #F2F3F5;
+    
+}
+
+.cate_table{
+    max-width: 100%;
+}
+.art-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.art-button-group{
+    display: flex;
+}
+
+.cate_table_form{
+    padding: 15px 15px 0 15px;
+}
+.cate_table_form label {
+    width: 15%;
+}
+
+
+@media (max-width:400px)  {
+    .cate_body{
+        padding: 0 !important;
+        }
+}

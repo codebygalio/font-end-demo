@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let data = {name:123}
+    let _name = data.name
+    Object.defineProperty(data, 'name', {
+        get(){
+            return _name
+        },
+      set(newValue) {
+        console.log('你修改了data1的name属性最新的值为', newValue)
+        _name = newValue
+      }
+    })
+  </script>
+</body>
+
+</html>

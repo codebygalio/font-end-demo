@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    省: <select class="sheng">
+        <option>-请选择-</option>
+    </select>
+    市: <select class="shi">
+        <option>-请选择-</option>
+    </select>
+    区: <select class="qu">
+        <option>-请选择-</option>
+    </select>
+
+    <script>
+        var city = [
+        {
+            "id": 10001,
+            "name": "内蒙古",
+            "child": [
+                {
+                    "id": 100011,
+                    "name": "呼和浩特",
+                    "child": [
+                        {
+                            "id": 100011,
+                            "name": "回民区"
+                        },
+                        {
+                            "id": 100011,
+                            "name": "玉泉区"
+                        },
+                        {
+                            "id": 100011,
+                            "name": "赛罕区"
+                        }
+                    ]
+                },
+                {
+                    "id": 100012,
+                    "name": "赤峰市",
+                    "child": [
+                        {
+                            "id": 100011,
+                            "name": "松山区"
+                        },
+                        {
+                            "id": 100011,
+                            "name": "洪山区"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 10002,
+            "name": "河北省",
+            "child": [
+                {
+                    "id": 100021,
+                    "name": "石家庄",
+                    "child": [
+                        {
+                            "id": 100021,
+                            "name": "长安区"
+                        },
+                        {
+                            "id": 100021,
+                            "name": "新华区"
+                        }
+                    ]
+                },
+                {
+                    "id": 100022,
+                    "name": "张家口",
+                    "child": [
+                        {
+                            "id": 100021,
+                            "name": "桥东区"
+                        },
+                        {
+                            "id": 100021,
+                            "name": "桥西区"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+        var sheng = document.getElementsByClassName("sheng")[0]
+        var shi = document.getElementsByClassName("shi")[0]
+        var qu = document.getElementsByClassName("qu")[0]
+        var nowShengIndex = 0;
+
+        for(var i = 0;i<city.length;i++){
+            var optEle = new Option(city[i].name,i);
+            sheng.appendChild(optEle)
+        }
+
+        sheng.onchange = function(){
+            // 清空之前的数据
+            shi.options.length = 1;
+            qu.options.length = 1;
+        
+            for(var i = 0;i<city[this.value].child.length;i++){
+                var optEle = new Option(city[this.value].child[i].name,i);
+                shi.appendChild(optEle)
+            }
+            nowShengIndex = this.value
+        }
+
+        shi.onchange = function(){
+            qu.options.length = 1;
+            for(var i = 0;i<city[nowShengIndex].child[this.value].child.length;i++){
+                var optEle = new Option(city[nowShengIndex].child[this.value].child[i].name,i);
+                qu.appendChild(optEle)
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

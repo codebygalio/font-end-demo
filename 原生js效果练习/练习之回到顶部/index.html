@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 500px;
+        }
+        .backtop{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        #btn{
+            width: 35px;
+            height: 45px;
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            background: #333;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div>内容1</div>
+    <div>内容2</div>
+    <div>内容3</div>
+    <div>内容4</div>
+    <div>内容5</div>
+    <div>内容6</div>
+    <div>内容7</div>
+    <div>内容8</div>
+    <!-- <button id="backtop" class="backtop">回到顶部</button> -->
+    <a href="javaScript:void(0)" id="btn">回到顶部</a>
+
+    <script>
+        // var backtop =document.getElementById("backtop");
+        // backtop.onclick = function(){
+        //     // document.documentElement.scrollTop = 0;
+        //     scrollTo(0,0)
+        // }
+
+        window.onload = function(){
+
+            var btn = document.getElementById("btn");
+            var clientHeight = document.documentElement.clientHeight;
+            var timer = null;
+
+            window.onscroll = function(){
+                var scrollHeight = document.documentElement.scrollTop;
+                if(clientHeight < scrollHeight){
+                    btn.style.display = "block"
+                }else{
+                    btn.style.display = "none"
+                }
+            }
+
+            btn.onclick = function(){
+
+                timer = setInterval(function(){
+                    var scrollHeight = document.documentElement.scrollTop;
+                    var ispeed = Math.floor(-scrollHeight / 10);
+                    document.documentElement.scrollTop = scrollHeight + ispeed; 
+                    if(scrollHeight == 0){
+                        clearInterval(timer)
+                    }
+                },30)
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

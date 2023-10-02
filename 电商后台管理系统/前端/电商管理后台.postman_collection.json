@@ -1,0 +1,814 @@
+{
+	"info": {
+		"_postman_id": "d117da22-99be-4b8d-b9c8-fede043acc9f",
+		"name": "电商管理后台",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23288634"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "ada",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "3232",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得user页面的用户列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODM0ODAsImV4cCI6MTY2NjY2OTg4MH0.1SfmGKMiP5DeTv6z6lbDIDLUTeH678HJNHii9hHvB80",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/users?pagenum=1&pagesize=100",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "pagenum",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user页面新增用户",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODk0NDEsImV4cCI6MTY2NjY3NTg0MX0.XFlVy_cL39Pxryb0Myl544MQfNGnGLRGh7K4CDqtUtg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "新测试用户名称",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"description": "可以为空",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "",
+									"description": "可以为空",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user页面根据id获取get用户信息",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODM0ODAsImV4cCI6MTY2NjY2OTg4MH0.1SfmGKMiP5DeTv6z6lbDIDLUTeH678HJNHii9hHvB80",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/users/500",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"users",
+								"500"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user页面更新用户数据",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODM0ODAsImV4cCI6MTY2NjY2OTg4MH0.1SfmGKMiP5DeTv6z6lbDIDLUTeH678HJNHii9hHvB80",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "123456@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "13825129825",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/users/500",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"users",
+								"500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user页面删除用户",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODM0ODAsImV4cCI6MTY2NjY2OTg4MH0.1SfmGKMiP5DeTv6z6lbDIDLUTeH678HJNHii9hHvB80",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/users/510",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"users",
+								"510"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "权限",
+			"item": [
+				{
+					"name": "删除对应角色的权限",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/roles/角色规则id/rights/规则id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"roles",
+								"角色规则id",
+								"rights",
+								"规则id"
+							],
+							"query": [
+								{
+									"key": "xx",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "roles/${roles.id}/rights/${id}"
+					},
+					"response": []
+				},
+				{
+					"name": "查询所有角色权限列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY1ODM0ODAsImV4cCI6MTY2NjY2OTg4MH0.1SfmGKMiP5DeTv6z6lbDIDLUTeH678HJNHii9hHvB80",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/roles",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得目前已有的权限列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY2NDY1MzIsImV4cCI6MTY2NjczMjkzMn0.4pVTta7ikabIjNeQEHi2GBrPAslU0JItL1lpP9qO0b8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/rights/tree",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"rights",
+								"tree"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "设置角色的权限",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rids",
+									"value": "",
+									"description": "类型字符串,将原来的数组转成字符串形式用,隔开",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/roles/角色的ID/rights",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"roles",
+								"角色的ID",
+								"rights"
+							]
+						},
+						"description": "其中节点需包含父节点,否则父节点会被禁用(而在前端中,如果包含父节点,可能父节点下的子节点全部选中,这是冲突点)"
+					},
+					"response": []
+				},
+				{
+					"name": "删除角色的某个规则权限",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/roles/角色规则id/rights/规则id",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"roles",
+								"角色规则id",
+								"rights",
+								"规则id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "商品",
+			"item": [
+				{
+					"name": "获得商品分类列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY3ODE1NjgsImV4cCI6MTY2Njg2Nzk2OH0.SIfE1fH8clptr7R-3XuAXbHVsb27DnxDaLcNLjrDqNU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pagenum",
+									"value": "",
+									"description": "【可选】当前页码值",
+									"type": "text"
+								},
+								{
+									"key": "pagesize",
+									"value": "",
+									"description": "【可选】每页显示多少数据",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "【可选】可传入1、2、3,限制显示的层级分类",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/categories",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增商品分类",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY3ODE1NjgsImV4cCI6MTY2Njg2Nzk2OH0.SIfE1fH8clptr7R-3XuAXbHVsb27DnxDaLcNLjrDqNU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "cat_pid",
+									"value": "",
+									"description": "不能为空,如果是最高级的分类,设置为0",
+									"type": "text"
+								},
+								{
+									"key": "cat_name",
+									"value": "",
+									"description": "不能为空,分类名称",
+									"type": "text"
+								},
+								{
+									"key": "cat_level",
+									"value": "",
+									"description": "不能为空,0是1级分类,1是2级分类,2是三级分类",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/categories",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询get商品的静态、动态参数",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjY5OTY4MzUsImV4cCI6MTY2NzA4MzIzNX0.BMIBZ4iybHCDVbT36j8o3tmYD_X8faIo1SFUIVFPdJs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "sel",
+									"value": "only",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/categories/6/attributes?sel=many",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"categories",
+								"6",
+								"attributes"
+							],
+							"query": [
+								{
+									"key": "sel",
+									"value": "many",
+									"description": "必选,填only表示静态参数、many表示动态"
+								}
+							]
+						},
+						"description": "/categories/查询的id/attributes"
+					},
+					"response": []
+				},
+				{
+					"name": "更新商品",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "attr_sel",
+									"value": "",
+									"description": "[only,many]静态参数是only,动态属性是many",
+									"type": "text"
+								},
+								{
+									"key": "attr_name",
+									"value": "",
+									"description": "新属性的名字",
+									"type": "text"
+								},
+								{
+									"key": "attr_vals",
+									"value": "",
+									"description": "可选参数,参数的属性值",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/categories/分类ID/attributes/属性ID",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"categories",
+								"分类ID",
+								"attributes",
+								"属性ID"
+							]
+						},
+						"description": "http://127.0.0.1:8888/api/private/v1/categories/分类ID/属性ID"
+					},
+					"response": []
+				},
+				{
+					"name": "删除商品",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/categories/分类ID/attributes/属性ID",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"categories",
+								"分类ID",
+								"attributes",
+								"属性ID"
+							]
+						},
+						"description": "http://127.0.0.1:8888/api/private/v1/categories/分类ID/attributes/属性ID"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "订单",
+			"item": [
+				{
+					"name": "查询订单数据列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE2NjcyMzMyNjEsImV4cCI6MTY2NzMxOTY2MX0.FPbwaJEpzqfgXsOA2U_Piu0xOYt03yp6hRzJlL9HH88",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "query",
+									"value": "",
+									"description": "查询参数(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "pagenum",
+									"value": "",
+									"description": "当前页码\n",
+									"type": "text"
+								},
+								{
+									"key": "pagesize",
+									"value": "",
+									"description": "每页显示条数\n",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "",
+									"description": "用户ID(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "pay_status",
+									"value": "",
+									"description": "支付状态(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "is_send",
+									"value": "",
+									"description": "是否发货(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "order_fapiao_title",
+									"value": "",
+									"description": "['个人','公司'](可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "order_fapiao_company",
+									"value": "",
+									"description": "公司名称(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "order_fapiao_content",
+									"value": "",
+									"description": "发票名称(可以为空)",
+									"type": "text"
+								},
+								{
+									"key": "consignee_addr",
+									"value": "",
+									"description": "发货地址(可以为空)",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/api/private/v1/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"private",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

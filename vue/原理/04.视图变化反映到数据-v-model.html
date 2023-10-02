@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <input type="text" v-model="name">
+  </div>
+   
+  
+  <script>
+    let data = {
+      name: '小王',
+      age: 10
+    }
+    Object.keys(data).forEach((key) => {
+      defineReactive(data, key, data[key])
+    })
+    function defineReactive(data, key, value) {
+      Object.defineProperty(data, key, {
+        get() {
+          return value
+        },
+        set(newValue) {
+          if (newValue === value) {
+            return
+          }
+          value = newValue
+          compile()
+        }
+      })
+    }
+    function compile() {
+      let app = document.getElementById('app')
+      const childNodes = app.childNodes
+      childNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          const attrs = node.attributes
+          Array.from(attrs).forEach(attr => {
+            const nodeName = attr.nodeName
+            const nodeValue = attr.nodeValue
+            console.log(nodeName, nodeValue)
+            // 实现v-text
+            if (nodeName === 'v-text') {
+              node.innerText = data[nodeValue]
+            }
+            // 实现v-model
+            if(nodeName === 'v-model'){
+              node.value = data[nodeValue]
+              node.addEventListener('input',(e)=>{
+                let newValue = e.target.value
+                data[nodeValue] = newValue
+              })
+            }
+          })
+        }
+      })
+    }
+    compile()
+  </script>
+
+  
+</body>
+
+</html>

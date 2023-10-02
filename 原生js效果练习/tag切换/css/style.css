@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* 颜色值不建议使用名字，应该使用16进制最好 */
+    background-color: gray;
+}
+
+.container{
+    width: 300px;
+    height: 300px;
+    background: #fff;
+    margin: 100px auto;
+}
+
+.container .up{
+    height: 50px;
+    width: 100%;
+}
+
+.container .up ul{
+    list-style: none;
+    text-align: center;
+}
+
+.container .up ul li{
+    width: 60px;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+}
+
+.container .up ul li a{
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.select{
+    border-bottom: 2px solid orange;
+}
+
+.container .down{
+    height: 250px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.container .down div{
+    position: absolute;
+    line-height: 100px;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.container .down .div_select {
+    display: block;
+}

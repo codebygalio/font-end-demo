@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 600px;
+            margin: 80px auto;
+            border: 1px solid lightblue;
+        }
+
+        .container ul{
+            list-style: none;
+        }
+
+        .container ul li{
+            border-bottom: 1px dotted black;
+        }
+
+        .container ul li h3{
+            background: skyblue;
+            position: relative;
+        }
+
+        .container ul li h3 span{
+            position: absolute;
+            right: 5px;
+        }
+        .container ul li .content{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <ul>
+            <li>
+                <h3>向上海合作组织民间友好论坛致贺信<span>></span></h3>
+                <div class="content">
+                    强调，我在去年11月提出举办上海合作组织民间友好论坛的倡议，得到各成员国热烈响应和积极支持。相信论坛将成为各方增进了解、深化友谊、加强合作的重要平台。
+                　　指出，希望各方秉持“上海精神”，坚守初心，同舟共济，守望相助，深化合作。要发挥民间外交优势，拓宽各国人民心灵沟通渠道，为上海合作组织发展作出积极贡献。
+                　　上海合作组织民间友好论坛由中国人民对外友好协会、湖北省人民政府、上海合作组织睦邻友好合作委员会共同主办，当日在湖北省武汉市开幕，主题为“促进民间友好，传承‘上海精神’”。
+                </div>
+            </li>
+            <li>
+                <h3>向纳米比亚根哥布致慰问电<span>></span></h3>
+                <div class="content">
+                    在慰问电中表示，得知先生和根哥斯女士感染新冠病毒，我和夫人谨向你们表示最诚挚的慰问，祝你们早日康复。新冠肺炎疫情发生以来，中纳两国守望相助、携手抗疫，传统友谊得到深化。我高度重视中纳关系发展，愿同根哥布一道努力，推动两国全面战略合作伙伴关系不断迈上新台阶。
+                </div>
+            </li>
+            <li>
+                <h3>茁壮成长在欣欣向荣的国度 <span>></span></h3>
+                <div class="content">
+                    希望你们结合自身成长实际学好史，以英雄模范人物为榜样，从小坚定听话、跟走的决心，刻苦学习，树立理想，砥砺品格，增长本领，努力实现德智体美劳全面发展。”在“六一”国际儿童节到来之际，总书记给江苏省淮安市新安小学的少先队员们回信，对他们予以亲切勉励，并祝他们和全国小朋友们节日快乐。                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        $("h3").click(function(){
+            // is判断一个元素数据具有某个样式
+            // :visible 判断一个元素是否显示
+            if($(this).siblings().is(":visible")){
+                // 可见内容收起来
+                $(this).siblings().slideUp();
+                // 变更箭头符号
+                $(this).find("span").html(">")
+            }else{
+                // 不可见，展开内容,收起其他内容
+                $(this).parent().siblings().find(".content").slideUp();
+                // 展开自己
+                $(this).siblings().slideDown();
+                $(this).parent().siblings().find('span').html(">")
+                // 改变符号
+                $(this).find('span').html("v")
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

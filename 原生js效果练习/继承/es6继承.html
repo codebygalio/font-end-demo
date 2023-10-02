@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+  // function Person (name, age) {
+  //   this.name = name
+  //   this.age = age
+  // }
+  // Person.prototype.sayHi = function() {}
+  // Person.prototype.jump = function() {}
+
+
+  // 人类
+  class Person {
+    constructor (name, age) {
+      this.name = name
+      this.age = age
+    }
+    sayHi () {
+      console.log('你好哇')
+    }
+    jump () {
+      console.log('会跳')
+    }
+  }
+  const p = new Person('zs', 18)
+  console.log(p)
+
+
+  // 老师类
+  class Teacher extends Person {
+    constructor (name, age, lesson) {
+      super(name, age) 
+      this.lesson = lesson
+    }
+    teach () {
+      console.log('会教书')
+    }
+  }
+  const teacher = new Teacher('zs', 18, '教体育')
+  console.log(teacher)
+
+
+
+</script>
+  
+</body>
+</html>

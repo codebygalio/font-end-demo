@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" />
+  <script src="./lib/jquery.js"></script>
+</head>
+
+<body style="padding: 15px;">
+  <!-- 添加图书的Panel面板 -->
+  <div class="card text-white" >
+    <div class="card-header bg-primary " >添加新图书</div>
+    <div class="card-body form-row " >
+      <div class="col-md-11 col-lg-8">
+        <div class="form-row">
+          <div class="input-group col-md-4 my-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >书名</span>
+            </div>
+            <input type="text" class="form-control" id="iptBookname" placeholder="请输入书名" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group col-md-4 my-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >作者</span>
+            </div>
+            <input type="text" class="form-control" id="iptAuthor" placeholder="请输入作者" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class=" input-group col-md-4 my-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" >出版社</span>
+            </div>
+            <input type="text" class="form-control" id="iptPublisher" placeholder="请输入出版社" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 col-lg-4">
+        <button  id="btnAdd" type="submit" class="btn btn-primary my-1" style="white-space: nowrap;">添加</button>
+      </div>
+     
+
+    </div>
+  </div>
+  
+    
+
+
+  <!-- 图书的表格 -->
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>出版社</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tb"></tbody>
+  </table>
+
+  <script>
+    $(function () {
+      // 获取图书列表数据
+      function getBookList() {
+        $.get('http://www.liulongbin.top:3006/api/getbooks', function (res) {
+          if (res.status !== 200) return alert('获取数据失败！')
+
+          var rows = ''
+          $.each(res.data, function (i, item) {
+            rows+=('<tr><td>' + item.id + '</td><td>' + item.bookname + '</td><td>' + item.author + '</td><td>' + item.publisher + '</td><td><a href="javascript:;" class="del" data-id="' + item.id + '">删除</a></td></tr>')
+          })
+          $('#tb').empty().append(rows)
+        })
+      }
+
+      getBookList()
+
+      /* $('.del').on('click', function () {
+        console.log('ok')
+      }) */
+
+      // 通过代理的方式为动态添加的元素绑定点击事件
+      $('tbody').on('click', '.del', function () {
+        var id = $(this).attr('data-id')
+        $.get('http://www.liulongbin.top:3006/api/delbook', { id: id }, function (res) {
+          if (res.status !== 200) return alert('删除图书失败！')
+          getBookList()
+        })
+      })
+
+      $('#btnAdd').on('click', function () {
+        var bookname = $('#iptBookname').val().trim()
+        var author = $('#iptAuthor').val().trim()
+        var publisher = $('#iptPublisher').val().trim()
+        if (bookname.length <= 0 || author.length <= 0 || publisher.length <= 0) {
+          return alert('请填写完整的图书信息！')
+        }
+
+        $.post('http://www.liulongbin.top:3006/api/addbook', { bookname: bookname, author: author, publisher: publisher }, function (res) {
+          if (res.status !== 201) return alert('添加图书失败！')
+          getBookList()
+          $('#iptBookname').val('')
+          $('#iptAuthor').val('')
+          $('#iptPublisher').val('')
+        })
+      })
+    })
+  </script>
+
+</body>
+
+</html>

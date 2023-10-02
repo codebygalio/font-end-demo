@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p v-text="name"></p>
+    <p v-text="name"></p>
+    <span v-text="age"></span>
+    <input type="text" v-model="age">
+  </div>
+
+  <script>
+    const Dep = {
+      map: {},
+      collect(eventName, fn) {
+        
+        if (!this.map[eventName]) {
+          this.map[eventName] = []
+        }
+        this.map[eventName].push(fn)
+      },
+      trigger(eventName) {
+        this.map[eventName].forEach(fn => fn())
+      }
+    }
+
+    let data = {
+      name: '小王',
+      age: 10
+    }
+
+    Object.keys(data).forEach((key) => {
+      defineReactive(data, key, data[key])
+    })
+    function defineReactive(data, key, value) {
+      Object.defineProperty(data, key, {
+        get() {
+
+          return value
+        },
+        set(newValue) {
+          if (newValue === value) {
+            return
+          }
+          value = newValue
+          Dep.trigger(key)
+        }
+      })
+    }
+    function compile() {
+      let app = document.getElementById('app')
+      // 拿到所有节点
+      const childNodes = app.childNodes 
+      childNodes.forEach(node => {
+        if (node.nodeType === 1) {
+          const attrs = node.attributes
+          Array.from(attrs).forEach(attr => {
+            const nodeName = attr.nodeName
+            const nodeValue = attr.nodeValue
+            if (nodeName === 'v-text') {
+              node.innerText = data[nodeValue]
+              Dep.collect(nodeValue, () => {
+                console.log(`当前您修改了属性${nodeValue}`)
+                node.innerText = data[nodeValue]
+              })
+            }
+            if (nodeName === 'v-model') {
+              node.value = data[nodeValue]
+              Dep.collect(nodeValue,()=>{
+                node.value = data[nodeValue]
+              })
+              node.addEventListener('input', (e) => {
+                let newValue = e.target.value
+                data[nodeValue] = newValue
+              })
+            }
+          })
+        }
+      })
+    }
+    compile()
+    console.log(Dep)
+  </script>
+
+
+</body>
+
+</html>
