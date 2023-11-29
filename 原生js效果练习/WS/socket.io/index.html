@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/zh-cn.min.js"></script>
+    <style>
+      .container {
+        margin-top: 30px;
+      }
+      #textMsg {
+        margin-bottom: 10px;
+      }
+      .user {
+        color: green;
+        cursor: pointer;
+      }
+      .new-body{
+        padding: 15 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="text-center">欢迎观临聊天室</h2>
+              <div class="row">
+                <div class="col-xs-6 text-center">
+                  <div id="joinRed"  class="btn btn-danger" onclick="join('Red')">进入红房间</div>
+                  <div id="leaveRed"  style="display: none" class="btn btn-danger" onclick="leave('Red')">
+                    离开红房间
+                  </div>
+                </div>
+                <div class="col-xs-6 text-center">
+                  <div id="joinGreen" class="btn btn-success"  onclick="join('Green')">进入绿房间</div>
+                  <div id="leaveGreen" style="display: none" class="btn btn-success"  onclick="leave('Green')">
+                    离开绿房间
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body new-body">
+              <ul style="height: 300px;overflow-y: scroll;" class="list-group" id="messageList" onclick="clickUser(event)">
+                <!-- <li class="list-group-item">Cras justo odio</li>  -->
+              </ul>
+            </div>
+            <div class="panel-footer">
+              <form action="#">
+                <div class="row">
+                  <div class="col-md-10">
+                    <input id="textMsg" type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-2">
+                    <button onclick="sendMsg(event)" id="sendBtn" class="btn btn-primary">发言</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      console.log();
+
+      // dayjs.locale('zh-cn')
+      // console.log(dayjs().to(dayjs(new Date())) )
+      let textMsg = document.querySelector("#textMsg");
+      let sendBtn = document.querySelector("#sendBtn");
+      let messageList = document.querySelector("#messageList");
+      let joinRed = document.querySelector('#joinRed')
+      let leaveRed = document.querySelector('#leaveRed')
+      let joinGreen= document.querySelector('#joinGreen')
+      let leaveGreen = document.querySelector('#leaveGreen')
+
+      let socket = io.connect("/");
+      function insertContent(msgObj) {
+        let li = document.createElement("li");
+        li.classList.add("list-group-item");
+        li.innerHTML = `<span class="user">${msgObj.username}</span>: ${
+          msgObj.content
+        }<span class="pull-right">${moment(msgObj.createAt).fromNow()}</span>`;
+        messageList.append(li);
+      }
+      socket.on("connect", function () {
+        socket.emit("getAllMessages");
+        console.log("连接成功");
+      });
+      socket.on("allMessages", function (msgArr) {
+        console.log("msgArr=", msgArr);
+        msgArr.forEach((item) => {
+          insertContent(item);
+        });
+      });
+      socket.on("message", (msgObj) => {
+        console.log("msgObj=", msgObj);
+        insertContent(msgObj);
+        // alert(content)
+      });
+      socket.on('joined',function(roomName){
+        console.log('roomName=',roomName)
+        let joinButton = document.querySelector('#join' + roomName)
+      let leaveButton = document.querySelector('#leave' + roomName)
+      joinButton.style.display = 'none'
+      leaveButton.style.display = 'inline-block'
+      })
+      socket.on('leaved',function(roomName) {
+        let joinButton = document.querySelector('#join' + roomName)
+        let leaveButton = document.querySelector('#leave' + roomName)
+        joinButton.style.display = 'inline-block'
+        leaveButton.style.display = 'none'
+      })  
+      socket.on("disconnect", function () {
+        console.log("断开连接");
+      });
+      function sendMsg(e) {
+        e.preventDefault();
+        let content = textMsg.value;
+        if (!content) return;
+        socket.send(content);
+        textMsg.value = "";
+      }
+      function clickUser(e) {
+        // console.log(e.target.classList)
+        if (Array.from(e.target.classList).includes("user")) {
+          textMsg.value = `@${e.target.innerText} `;
+        }
+      }
+      function join(roomName) {
+        socket.emit('join',roomName)
+      }
+      function leave(roomName) {
+        socket.emit('leave', roomName)
+      }
+      
+    </script>
+  </body>
+</html>
