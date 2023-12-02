@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.15/vue.min.js"></script>
+    <style>
+        .v-enter,.v-leave-to{
+            opacity: 0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 3s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition mode="out-in">
+            <div v-if="show" key="a">aaaaa</div>
+            <div v-else key="b">bbbbb</div>
+        </transition>
+        <button @click="show=!show">按钮</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{show:false}
+        })
+    </script>
+</body>
+</html>
